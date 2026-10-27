@@ -12,8 +12,10 @@
             <Setter Property="Margin" Value="0,0,0,16" />
         </Style>
     </UserControl.Resources>
-    <Border Style="{StaticResource Card}" MaxWidth="560" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <!-- Outer scroller keeps the card centered and lets it shrink/grow with the window (max 640 px for readability). -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Border Style="{StaticResource Card}" MaxWidth="640" Margin="16,8" Padding="32,24"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <StackPanel>
                 <TextBlock Text="Employee details" Style="{StaticResource PageTitle}" FontSize="18" Margin="0,0,0,16" />
 
@@ -57,6 +59,6 @@
                 </tt:CheckListBox>
                 <TextBlock Text="{Binding Form.TermsError}" Foreground="#D13438" FontSize="12" Margin="0,4,0,0" />
             </StackPanel>
-        </ScrollViewer>
-    </Border>
+        </Border>
+    </ScrollViewer>
 </UserControl>

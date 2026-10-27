@@ -21,9 +21,16 @@ public class FormDataModel : ViewModelBase, IDataErrorInfo
         _terms.PropertyChanged += (_, _) =>
         {
             OnPropertyChanged(nameof(AcceptTerms));
-            OnPropertyChanged(nameof(IsValid));
+            Revalidate();
             OnPropertyChanged(nameof(TermsError));
         };
+    }
+
+    /// <summary>Refreshes IsValid and the indexer-based error messages bound in the view.</summary>
+    private void Revalidate()
+    {
+        OnPropertyChanged(nameof(IsValid));
+        OnPropertyChanged("Item[]");
     }
 
     /// <summary>Entries shown in the CheckListBox.</summary>
@@ -33,13 +40,13 @@ public class FormDataModel : ViewModelBase, IDataErrorInfo
     public string TermsError => this[nameof(AcceptTerms)];
 
     /// <summary>First name (required).</summary>
-    public string FirstName { get => _firstName; set { if (SetProperty(ref _firstName, value)) OnPropertyChanged(nameof(IsValid)); } }
+    public string FirstName { get => _firstName; set { if (SetProperty(ref _firstName, value)) Revalidate(); } }
     /// <summary>Last name (required).</summary>
-    public string LastName { get => _lastName; set { if (SetProperty(ref _lastName, value)) OnPropertyChanged(nameof(IsValid)); } }
+    public string LastName { get => _lastName; set { if (SetProperty(ref _lastName, value)) Revalidate(); } }
     /// <summary>Department (required).</summary>
-    public string Department { get => _department; set { if (SetProperty(ref _department, value)) OnPropertyChanged(nameof(IsValid)); } }
+    public string Department { get => _department; set { if (SetProperty(ref _department, value)) Revalidate(); } }
     /// <summary>Joining date (cannot be in the future).</summary>
-    public DateTime? JoiningDate { get => _joiningDate; set { if (SetProperty(ref _joiningDate, value)) OnPropertyChanged(nameof(IsValid)); } }
+    public DateTime? JoiningDate { get => _joiningDate; set { if (SetProperty(ref _joiningDate, value)) Revalidate(); } }
     /// <summary>Notification preference.</summary>
     public bool EnableNotifications => _notifications.IsChecked;
     /// <summary>Terms acceptance (required).</summary>
