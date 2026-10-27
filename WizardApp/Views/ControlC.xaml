@@ -42,7 +42,19 @@
                 </til:SfTextInputLayout>
 
                 <!-- Syncfusion CheckListBox replaces native CheckBoxes. -->
-                <tt:CheckListBox ItemsSource="{Binding Form.Options}" DisplayMemberPath="Label" IsCheckedMemberPath="IsChecked" />
+                <tt:CheckListBox ItemsSource="{Binding Form.Options}" DisplayMemberPath="Label"
+                                 VirtualizingPanel.IsVirtualizing="False" BorderThickness="0">
+                    <tt:CheckListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </tt:CheckListBox.ItemsPanel>
+                    <tt:CheckListBox.ItemContainerStyle>
+                        <Style TargetType="tt:CheckListBoxItem">
+                            <Setter Property="IsChecked" Value="{Binding IsChecked, Mode=TwoWay}" />
+                        </Style>
+                    </tt:CheckListBox.ItemContainerStyle>
+                </tt:CheckListBox>
                 <TextBlock Text="{Binding Form.TermsError}" Foreground="#D13438" FontSize="12" Margin="0,4,0,0" />
             </StackPanel>
         </ScrollViewer>
