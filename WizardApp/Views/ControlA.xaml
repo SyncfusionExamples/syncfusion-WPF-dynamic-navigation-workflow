@@ -1,0 +1,25 @@
+<UserControl x:Class="WizardApp.Views.ControlA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:tree="clr-namespace:Syncfusion.UI.Xaml.TreeView;assembly=Syncfusion.SfTreeView.WPF">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Margin="0,0,0,8" Padding="6"
+                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="Search departments" />
+        <tree:SfTreeView Grid.Row="1"
+                         ItemsSource="{Binding Nodes}"
+                         ChildPropertyName="Children"
+                         CheckBoxMode="Recursive"
+                         AutoExpandMode="RootNodes">
+            <tree:SfTreeView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                </DataTemplate>
+            </tree:SfTreeView.ItemTemplate>
+        </tree:SfTreeView>
+    </Grid>
+</UserControl>
