@@ -23,6 +23,8 @@
             <Setter Property="Height" Value="32" />
             <Setter Property="Margin" Value="8,0,0,0" />
             <Setter Property="SizeMode" Value="Normal" />
+            <Setter Property="SmallIcon" Value="{x:Null}" />
+            <Setter Property="LargeIcon" Value="{x:Null}" />
         </Style>
     </Window.Resources>
 
