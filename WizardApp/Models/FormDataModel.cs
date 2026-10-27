@@ -10,8 +10,27 @@ public class FormDataModel : ViewModelBase, IDataErrorInfo
     private string _lastName = string.Empty;
     private string _department = string.Empty;
     private DateTime? _joiningDate = DateTime.Today;
-    private bool _enableNotifications;
-    private bool _acceptTerms;
+    private readonly CheckOption _notifications = new() { Label = "Enable Notifications" };
+    private readonly CheckOption _terms = new() { Label = "Accept Terms" };
+
+    /// <summary>Creates the form and relays option changes to the model properties.</summary>
+    public FormDataModel()
+    {
+        Options = new[] { _notifications, _terms };
+        _notifications.PropertyChanged += (_, _) => OnPropertyChanged(nameof(EnableNotifications));
+        _terms.PropertyChanged += (_, _) =>
+        {
+            OnPropertyChanged(nameof(AcceptTerms));
+            OnPropertyChanged(nameof(IsValid));
+            OnPropertyChanged(nameof(TermsError));
+        };
+    }
+
+    /// <summary>Entries shown in the CheckListBox.</summary>
+    public CheckOption[] Options { get; }
+
+    /// <summary>Validation message for the terms option.</summary>
+    public string TermsError => this[nameof(AcceptTerms)];
 
     /// <summary>First name (required).</summary>
     public string FirstName { get => _firstName; set { if (SetProperty(ref _firstName, value)) OnPropertyChanged(nameof(IsValid)); } }
@@ -22,9 +41,9 @@ public class FormDataModel : ViewModelBase, IDataErrorInfo
     /// <summary>Joining date (cannot be in the future).</summary>
     public DateTime? JoiningDate { get => _joiningDate; set { if (SetProperty(ref _joiningDate, value)) OnPropertyChanged(nameof(IsValid)); } }
     /// <summary>Notification preference.</summary>
-    public bool EnableNotifications { get => _enableNotifications; set => SetProperty(ref _enableNotifications, value); }
+    public bool EnableNotifications => _notifications.IsChecked;
     /// <summary>Terms acceptance (required).</summary>
-    public bool AcceptTerms { get => _acceptTerms; set { if (SetProperty(ref _acceptTerms, value)) OnPropertyChanged(nameof(IsValid)); } }
+    public bool AcceptTerms => _terms.IsChecked;
 
     /// <summary>Not used by WPF; see indexer.</summary>
     public string Error => string.Empty;

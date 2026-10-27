@@ -3,11 +3,14 @@ using WizardApp.Models;
 
 namespace WizardApp.ViewModels;
 
-/// <summary>ViewModel for the DataGrid step; supplies 50 sample rows.</summary>
+/// <summary>ViewModel for the DataGrid step; supplies 50 editable sample rows.</summary>
 public class ControlBViewModel : ViewModelBase
 {
-    private static readonly string[] Departments = { "Sales", "Marketing", "Support" };
-    private static readonly string[] Statuses = { "Active", "On Leave", "Inactive" };
+    /// <summary>Choices for the Department column editor.</summary>
+    public string[] Departments { get; } = { "Sales", "Marketing", "Support", "Engineering" };
+
+    /// <summary>Choices for the Status column editor.</summary>
+    public string[] Statuses { get; } = { "Active", "On Leave", "Inactive" };
 
     /// <summary>Generates sample data.</summary>
     public ControlBViewModel()

@@ -9,5 +9,5 @@ public class ControlCViewModel : ViewModelBase
     public FormDataModel Form { get; } = new();
 
     /// <summary>Choices for the department ComboBox.</summary>
-    public string[] Departments { get; } = { "Sales", "Marketing", "Support" };
+    public string[] Departments { get; } = { "Sales", "Marketing", "Support", "Engineering" };
 }
