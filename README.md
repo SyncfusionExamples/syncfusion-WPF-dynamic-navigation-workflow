@@ -16,7 +16,7 @@ A wizard-style WPF sample that shows how to navigate between dynamically loaded 
 - Windows 10 or later
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - Visual Studio 2022 with the *.NET desktop development* workload (optional; the CLI also works)
-- A [Syncfusion license key](https://www.syncfusion.com/products/communitylicense) (a free Community License is available)
+- A Syncfusion license key
 
 ## Getting started
 
