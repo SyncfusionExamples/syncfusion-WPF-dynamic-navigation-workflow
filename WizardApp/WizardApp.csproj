@@ -11,13 +11,13 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.SfInput.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.Shared.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.SfTextInputLayout.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="28.1.33" />
-    <PackageReference Include="Syncfusion.Themes.FluentLight.WPF" Version="28.1.33" />
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfTextInputLayout.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Themes.FluentLight.WPF" Version="35.1.41" />
   </ItemGroup>
 </Project>
