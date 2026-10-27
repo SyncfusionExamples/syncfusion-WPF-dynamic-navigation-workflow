@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>WizardApp</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfGrid.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfTextInputLayout.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="35.1.41" />
+    <PackageReference Include="Syncfusion.Themes.FluentLight.WPF" Version="35.1.41" />
+  </ItemGroup>
+</Project>

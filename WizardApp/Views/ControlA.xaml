@@ -1,0 +1,39 @@
+<UserControl x:Class="WizardApp.Views.ControlA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:tree="clr-namespace:Syncfusion.UI.Xaml.TreeView;assembly=Syncfusion.SfTreeView.WPF"
+             xmlns:til="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+             xmlns:input="clr-namespace:Syncfusion.Windows.Controls.Input;assembly=Syncfusion.SfInput.WPF">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <til:SfTextInputLayout Grid.Row="0" Hint="Search organization" Margin="0,0,0,12" ContainerType="Outlined">
+            <input:SfTextBoxExt Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        </til:SfTextInputLayout>
+
+        <Border Grid.Row="1" Style="{StaticResource Card}">
+            <tree:SfTreeView ItemsSource="{Binding Nodes}"
+                             ChildPropertyName="Children"
+                             AutoExpandMode="AllNodes"
+                             SelectionMode="Single"
+                             SelectedItem="{Binding SelectedNode, Mode=TwoWay}"
+                             ItemHeight="32">
+                <tree:SfTreeView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Glyph}" Style="{StaticResource IconText}" />
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding Description}" Margin="8,0,0,0" Opacity="0.6" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </tree:SfTreeView.ItemTemplate>
+            </tree:SfTreeView>
+        </Border>
+
+        <TextBlock Grid.Row="2" Margin="0,12,0,0" Text="{Binding SelectionText}" Style="{StaticResource SubTitle}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+<UserControl x:Class="WizardApp.Views.ControlB"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:WizardApp.Converters"
+             xmlns:grid="clr-namespace:Syncfusion.UI.Xaml.Grid;assembly=Syncfusion.SfGrid.WPF">
+    <UserControl.Resources>
+        <conv:BindingProxy x:Key="Proxy" Data="{Binding}" />
+    </UserControl.Resources>
+    <Border Style="{StaticResource Card}">
+        <!-- Editing: click a cell (or press F2). Rows are UI-virtualized by default. -->
+        <grid:SfDataGrid ItemsSource="{Binding Items}"
+                         AutoGenerateColumns="False"
+                         AllowEditing="True"
+                         EditTrigger="OnTap"
+                         NavigationMode="Cell"
+                         AllowSorting="True"
+                         AllowFiltering="True"
+                         AllowGrouping="True"
+                         ShowGroupDropArea="True"
+                         RowHeight="32"
+                         ColumnSizer="Star">
+            <grid:SfDataGrid.Columns>
+                <grid:GridNumericColumn HeaderText="Id" MappingName="Id" NumberDecimalDigits="0" AllowEditing="False" />
+                <grid:GridTextColumn HeaderText="Name" MappingName="Name" />
+                <grid:GridComboBoxColumn HeaderText="Department" MappingName="Department"
+                                         ItemsSource="{Binding Data.Departments, Source={StaticResource Proxy}}" />
+                <grid:GridComboBoxColumn HeaderText="Status" MappingName="Status"
+                                         ItemsSource="{Binding Data.Statuses, Source={StaticResource Proxy}}" />
+            </grid:SfDataGrid.Columns>
+        </grid:SfDataGrid>
+    </Border>
+</UserControl>
