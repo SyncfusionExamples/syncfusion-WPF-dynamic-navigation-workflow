@@ -14,8 +14,7 @@ artifacts/
 *.userprefs
 *.DotSettings.user
 
-# Tests, coverage and logs
-TestResults/
+# Logs and coverage
 *.log
 *.trx
 coverage*/

@@ -52,20 +52,12 @@ WizardApp/
   Services/     NavigationService, SampleData
   ViewModels/   MainViewModel + one ViewModel per step
   Views/        MainWindow, ControlA, ControlB, ControlC
-WizardApp.Tests/  xUnit tests for navigation and ViewModel logic
 ```
 
 ## Dependencies
 
 All Syncfusion packages are version **35.1.41**: `Syncfusion.SfGrid.WPF`, `Syncfusion.SfTreeView.WPF`, `Syncfusion.SfInput.WPF`, `Syncfusion.SfTextInputLayout.WPF`, `Syncfusion.Shared.WPF`, `Syncfusion.Tools.WPF`, `Syncfusion.SfSkinManager.WPF` and `Syncfusion.Themes.FluentLight.WPF`.
 
-## Running the tests
-
-```bash
-dotnet test WizardApp.Tests
-```
-
-The tests cover the ViewModel logic only and need no UI.
 
 ## License
 
