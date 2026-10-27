@@ -1,31 +1,72 @@
 # Syncfusion WPF Dynamic Navigation Workflow
 
-A small MVVM wizard built with Syncfusion WPF controls (v35.1.41, FluentLight theme). One window hosts three steps; **Previous / Next** swap the content through ViewModel-to-View `DataTemplate`s (no frames, no reflection, no MVVM framework).
+A wizard-style WPF sample that shows how to navigate between dynamically loaded views using the **MVVM** pattern and **Syncfusion WPF** controls. A single window hosts three steps; the **Previous** and **Next** buttons swap the content through ViewModel-to-View `DataTemplate`s. It uses no frames, no reflection-based navigation and no third-party MVVM framework.
 
-| Step | View | Controls |
-| --- | --- | --- |
-| 1 | `ControlA` | `SfTreeView` (organization hierarchy) + `SfTextInputLayout` search |
-| 2 | `ControlB` | `SfDataGrid` (50 editable rows, sorting, filtering, grouping) |
-| 3 | `ControlC` | `SfTextInputLayout`, `SfTextBoxExt`, `ComboBoxAdv`, `DateTimeEdit`, `CheckListBox` |
+## Key features
 
-## Structure
-- `Models/` – data classes
-- `ViewModels/` – `MainViewModel` (navigation commands) and one ViewModel per step
-- `Services/NavigationService.cs` – tracks the current step
-- `Commands/RelayCommand.cs` – `ICommand` implementation
-- `Views/` – XAML views; `App.xaml` holds shared styles
-- `WizardApp.Tests/` – unit tests for navigation and ViewModels
+- **MVVM navigation**: `MainViewModel` exposes `NextCommand` and `PreviousCommand`. Previous is disabled on the first step and Next on the last, and the buttons update automatically.
+- **Step 1 – Organization tree**: `SfTreeView` with a four-level hierarchy (departments, teams, employees) and live search.
+- **Step 2 – Editable data grid**: `SfDataGrid` with 50 sample rows, in-place editing, sorting, filtering and grouping.
+- **Step 3 – Validated form**: `SfTextInputLayout`, `SfTextBoxExt`, `ComboBoxAdv`, `DateTimeEdit` and `CheckListBox`, with inline validation messages.
+- **Fluent theme**: `SfSkinManager` with the FluentLight theme, plus shared styles in `App.xaml`.
+- No business logic in code-behind. Public members have XML documentation.
 
-## Run
-Requires Windows and the .NET 8 SDK.
+## Prerequisites
 
-```
+- Windows 10 or later
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- Visual Studio 2022 with the *.NET desktop development* workload (optional; the CLI also works)
+- A [Syncfusion license key](https://www.syncfusion.com/products/communitylicense) (a free Community License is available)
+
+## Getting started
+
+```bash
+git clone https://github.com/SyncfusionExamples/Syncfusion-WPF-Dynamic-Navigation-Workflow.git
+cd Syncfusion-WPF-Dynamic-Navigation-Workflow
 dotnet run --project WizardApp
 ```
 
-Register your Syncfusion license key in `WizardApp/App.xaml.cs` to remove the trial banner.
+Or open `SyncfusionWizard.sln` in Visual Studio and press **F5**. NuGet packages restore automatically.
 
-## Test
+### Register your license key
+
+In `WizardApp/App.xaml.cs`, uncomment the line below and add your own key. Do not commit real keys to a public repository.
+
+```csharp
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR_LICENSE_KEY");
 ```
+
+## Usage
+
+1. Search and browse the organization in step 1, then click **Next**.
+2. Click a cell in the grid to edit it. Use the column headers to sort or filter, and drag a header to the group area to group. Click **Next**.
+3. Fill in the form in step 3. Required fields show validation messages until they are valid. Use **Previous** to go back at any time.
+
+## Project structure
+
+```
+WizardApp/
+  Commands/     RelayCommand (ICommand implementation)
+  Converters/   BindingProxy, StringToBoolConverter
+  Models/       Tree, grid and form data models
+  Services/     NavigationService, SampleData
+  ViewModels/   MainViewModel + one ViewModel per step
+  Views/        MainWindow, ControlA, ControlB, ControlC
+WizardApp.Tests/  xUnit tests for navigation and ViewModel logic
+```
+
+## Dependencies
+
+All Syncfusion packages are version **35.1.41**: `Syncfusion.SfGrid.WPF`, `Syncfusion.SfTreeView.WPF`, `Syncfusion.SfInput.WPF`, `Syncfusion.SfTextInputLayout.WPF`, `Syncfusion.Shared.WPF`, `Syncfusion.Tools.WPF`, `Syncfusion.SfSkinManager.WPF` and `Syncfusion.Themes.FluentLight.WPF`.
+
+## Running the tests
+
+```bash
 dotnet test WizardApp.Tests
 ```
+
+The tests cover the ViewModel logic only and need no UI.
+
+## License
+
+Syncfusion controls require a valid Syncfusion license (commercial or Community). See the [Syncfusion license terms](https://www.syncfusion.com/sales/products).

@@ -1,2 +1,37 @@
-bin/
-obj/
+# Build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+publish/
+artifacts/
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.DotSettings.user
+
+# Tests, coverage and logs
+TestResults/
+*.log
+*.trx
+coverage*/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local secrets / environment config
+*.pfx
+*.snk
+.env
+.env.*
+appsettings.*.local.json
